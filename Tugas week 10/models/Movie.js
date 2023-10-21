@@ -1,12 +1,14 @@
 const pool = require('../config/connection');
 
 class Movie {
-  static uploadPhoto(index, filePath) {
-    upload[index].photo = filePath;
-  }
-
-  static getPhoto(index) {
-    return upload[index].photo;
+  static async putPhoto(id, photo) {
+    try {
+        const query = `UPDATE public.movies SET photo = $1 WHERE id = $2`;
+        const result = await pool.query(query, [photo, id]);
+        return result;
+    } catch (error) {
+        throw new Error(error.message);
+    }
   }
 }
 

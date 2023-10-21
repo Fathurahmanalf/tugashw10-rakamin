@@ -1,11 +1,11 @@
 const pool = require('../config/connection');
 const multer = require('multer');
-const { diskStorage } = require('multer');
-const Movie = require('../models/Movie');
+const diskStorage = require('../middlewares/multer')
+const Movie = require('../models/Movie.js');
 
 class MovieController {
   static uploadMoviePhoto(req, res) {
-    multer({ storage: diskStorage }).single("photo")(req, res, (err) => {
+    multer({ storage: diskStorage }).single("upload")(req, res, (err) => {
       if (err) {
         res.status(400).send({
           status: false,

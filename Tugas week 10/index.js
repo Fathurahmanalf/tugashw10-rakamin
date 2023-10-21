@@ -8,6 +8,7 @@ const MovieController = require('./controllers/MovieController');
 const { diskStorage } = require('multer');
 
 
+
 app.use(express.json());
 
 app.use('/movies/:id/upload', express.static(path.join(__dirname, 'upload')));
